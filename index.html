@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaspersky vs. Windows Defender: Interactive Comparison</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+   
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold text-gray-900">Security Suite Showdown</h1>
+            <div class="hidden md:flex items-center space-x-6 text-gray-600 font-medium">
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#protection" class="nav-link">Protection</a>
+                <a href="#performance" class="nav-link">Performance</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#verdict" class="nav-link">The Verdict</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2">
+             <a href="#overview" class="block nav-link">Overview</a>
+             <a href="#protection" class="block nav-link">Protection</a>
+             <a href="#performance" class="block nav-link">Performance</a>
+             <a href="#features" class="block nav-link">Features</a>
+             <a href="#verdict" class="block nav-link">The Verdict</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <section id="overview" class="py-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Kaspersky vs. Windows Defender</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+                This interactive comparison analyzes two leading security solutions. We'll explore core protection, system impact, extra features, and overall value to help you decide which is best for your needs, based on comprehensive independent testing and analysis.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8 text-left">
+                <div class="card p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-emerald-600">Kaspersky</h3>
+                    <p class="text-gray-700 mb-4">A veteran third-party cybersecurity suite known for its top-tier malware detection, minimal false alarms, and a rich set of features in its paid versions.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Top-rated malware protection</li>
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Industry-leading low false positives</li>
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Feature-rich (VPN, Password Manager)</li>
+                        <li class="flex items-center"><span class="text-red-500 mr-2">✖</span> Paid subscription required for full features</li>
+                    </ul>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">Windows Defender</h3>
+                    <p class="text-gray-700 mb-4">Microsoft's free, built-in security platform for Windows. It offers robust baseline protection that's deeply integrated with the operating system.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Completely free and built-in</li>
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Strong core protection scores</li>
+                        <li class="flex items-center"><span class="text-emerald-500 mr-2">✔</span> Deep OS integration for advanced hardening</li>
+                        <li class="flex items-center"><span class="text-red-500 mr-2">✖</span> Fewer bundled utilities than paid suites</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="protection" class="py-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Core Protection Deep Dive</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 text-center mb-12">
+                Effective protection is an antivirus's most critical job. The charts below summarize results from independent labs like AV-Test and AV-Comparatives, which test against real-world malware and zero-day threats. A higher protection rate is better.
+            </p>
+            <div class="card p-6 mb-8">
+                 <h3 class="text-xl font-semibold text-center mb-2">Independent Lab Protection Scores (2024-2025)</h3>
+                 <p class="text-sm text-gray-500 text-center mb-4">Based on AV-Test (out of 6) and AV-Comparatives Protection Rate (%).</p>
+                <div class="chart-container">
+                    <canvas id="protectionChart"></canvas>
+                </div>
+            </div>
+            <p class="max-w-3xl mx-auto text-gray-600 text-center my-12">
+                While both products score exceptionally high on protection, another crucial factor is "false positives"—how often a security program incorrectly flags a safe file as malicious. Fewer false positives mean fewer interruptions and less confusion. Kaspersky consistently excels in this area.
+            </p>
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold text-center mb-2">False Positives Comparison (AV-Comparatives Business Test 2024)</h3>
+                <p class="text-sm text-gray-500 text-center mb-4">Lower is better. Shows number of incorrect detections on non-business software.</p>
+                <div class="chart-container" style="height: 250px; max-height: 300px;">
+                    <canvas id="falsePositivesChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance" class="py-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">System Performance Impact</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 text-center mb-12">
+                Great security shouldn't slow you down. Here's how the two solutions compare in performance tests, measuring their impact on everyday tasks like launching applications and copying files. "Very Fast" is the top rating.
+            </p>
+            <div class="card p-6">
+                 <h3 class="text-xl font-semibold text-center mb-2">Task Performance Ratings (AV-Comparatives Business Test 2024)</h3>
+                 <p class="text-sm text-gray-500 text-center mb-4">Comparing impact on common computer tasks. Coded: 2 = Very Fast, 1 = Fast.</p>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Features Beyond Antivirus</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 text-center mb-12">
+                Modern security suites offer more than just malware scanning. This section compares the extra utilities provided. Kaspersky's features are tiered (Standard, Plus, Premium), while Windows Defender's extras come from the wider Microsoft ecosystem. Hover over a feature for more info.
+            </p>
+            <div class="card overflow-x-auto p-6">
+                <div class="min-w-[700px]">
+                    <div class="grid grid-cols-5 gap-4 font-bold text-center border-b-2 pb-2 mb-4 text-gray-700">
+                        <div class="text-left">Feature</div>
+                        <div>Kaspersky Standard</div>
+                        <div>Kaspersky Plus</div>
+                        <div>Kaspersky Premium</div>
+                        <div>Windows / Microsoft</div>
+                    </div>
+                    <div id="features-grid" class="divide-y divide-gray-200"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="verdict" class="py-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">The Final Verdict</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 text-center mb-12">
+                The "best" choice depends on your specific needs. Select the profile that best describes you to see a tailored recommendation based on the full analysis.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button data-persona="budget" class="persona-btn px-6 py-2 bg-white rounded-full font-semibold shadow-sm border border-gray-200 hover:bg-gray-50">Budget-Conscious User</button>
+                <button data-persona="family" class="persona-btn px-6 py-2 bg-white rounded-full font-semibold shadow-sm border border-gray-200 hover:bg-gray-50">Family with Kids</button>
+                <button data-persona="power" class="persona-btn px-6 py-2 bg-white rounded-full font-semibold shadow-sm border border-gray-200 hover:bg-gray-50">All-in-One Power User</button>
+                <button data-persona="privacy" class="persona-btn px-6 py-2 bg-white rounded-full font-semibold shadow-sm border border-gray-200 hover:bg-gray-50">Privacy-Focused User</button>
+            </div>
+            <div id="recommendation-card" class="card p-8 mx-auto max-w-4xl text-center min-h-[200px] flex items-center justify-center">
+                 <p class="text-gray-500">Select a profile above to see our recommendation.</p>
+            </div>
+        </section>
+        
+    </main>
+    
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-6 text-center text-gray-400">
+            <p>&copy; 2025 Security Suite Showdown. All data is sourced from the "Kaspersky vs. Windows Defender" comparative analysis report.</p>
+            <p class="text-sm mt-1">This is an interactive visualization for informational purposes.</p>
+        </div>
+    </footer>
+
+</body>
+
+<script src="script.js"></script>
+</html>

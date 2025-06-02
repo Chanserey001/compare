@@ -1,0 +1,51 @@
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+                max-height: 350px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .persona-btn {
+            transition: all 0.3s ease;
+        }
+        .persona-btn.selected {
+            background-color: #2563eb;
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+        }
+        .feature-item:hover .feature-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
